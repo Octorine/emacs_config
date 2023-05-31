@@ -92,5 +92,8 @@
 
 (global-set-key (kbd "C-c b {") 'insert-pair-{})
 
+(defun config ()
+  "Go to the Emacs config folder"
+  (find-file user-emacs-directory))
 
 
