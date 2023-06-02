@@ -51,14 +51,15 @@
   (eglot-report-progress t))
 
 (use-package haskell-mode
-  :config
-  (eglot-ensure))
+  :hook
+  (haskell-mode . eglot-ensure))
 
 (use-package rust-mode
 	     :config
 	     (rust-enable-format-on-save)
-	     (eglot-ensure)
-	     )
+	     (eglot)
+	     :hook
+	     (rust-mode . eglot-ensure))
 
 ;-------------------------------------------------------------------------------
 ; Global keybindings
