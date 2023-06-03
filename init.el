@@ -12,7 +12,7 @@
  '(custom-enabled-themes '(deeper-blue))
  '(inhibit-startup-screen t)
  '(ispell-dictionary nil)
- '(package-selected-packages '(use-package eglot rust-mode haskell-mode)))
+ '(package-selected-packages '(## use-package eglot rust-mode haskell-mode)))
 
 ;; disable the toolbar
 
@@ -51,13 +51,14 @@
   (eglot-report-progress t))
 
 (use-package haskell-mode
-  :ensure eglot)
+  :hook
+  (haskell-mode . eglot-ensure))
 
 (use-package rust-mode
-  :ensure eglot
 	     :config
 	     (rust-enable-format-on-save)
-	     )
+	     :hook
+	     (rust-mode . eglot-ensure))
 
 ;-------------------------------------------------------------------------------
 ; Global keybindings
@@ -95,5 +96,3 @@
 (defun config ()
   "Go to the Emacs config folder"
   (find-file user-emacs-directory))
-
-
