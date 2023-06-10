@@ -2,24 +2,30 @@
 ;; or {}.  If there is an active region, surround it with the
 ;; characters.
 
-(defun insert-pair-{} ()
-  "Insert a pair of {} brackets and position the cursor inside."
-  (interactive)
-  		  (insert "{\n\n}")
-		  (previous-line))
-(defun insert-pair-parens ()
-  "Insert a pair of () brackets and position the cursor inside."
-  (interactive)
-  		  (insert "()")
-		  (backward-char))
+(setq skeleton-pair t)
+(setq skeleton-pair-alist
+      '( (?\( . (_ ?\)))
+	 (?\[ . (_ ?\]))
+	 (?\{ . (\n _ > \n ?\}))
+	 (?\" . (_ ?\"))
+	 (?\' . (_ ?\'))
+	 (?< . (_ ?>))))
 
-(global-set-key (kbd "C-c b (") 'insert-pair-parens)
+(setq skeleton-pair-transient-map
+      (make-sparse-keymap))
+(mapcar
+ (lambda (skeleton)
+   (bind-key
+    (string (car skeleton))
+    'skeleton-pair-insert-maybe))
+ skeleton-pair-alist)
 
-(defun insert-pair-{} ()
-  "Insert a pair of {} brackets and position the cursor inside."
+(defun insert-matched-pair
+    ()
+  "Insert a matched pair from the skeleton-pair-alist"
   (interactive)
-  		  (insert "{\n\n}")
-		  (previous-line)
-		  (indent-for-tab-command))
+  (set-transient-map skeleton-pair-transient-map))
+  
+  
 
-(global-set-key (kbd "C-c b {") 'insert-pair-{})
+(global-set-key (kbd "C-c b") 'insert-matched-pair) 
