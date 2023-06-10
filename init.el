@@ -122,4 +122,5 @@
 
 (defun config ()
   "Go to the Emacs config folder"
+  (interactive)
   (find-file user-emacs-directory))
