@@ -18,6 +18,11 @@
 
 (tool-bar-mode -1)
 
+;; add site-list-directory
+
+(add-to-list 'load-path  (concat user-emacs-directory  "site-lisp"))
+
+
 ;;------------------------------------------------------------------------------
 ;; Packages
 ;;------------------------------------------------------------------------------
@@ -69,58 +74,13 @@
 (global-set-key (kbd "C-c K") 'eldoc-doc-buffer)
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c E") 'flymake-show-project-diagnostics)
-
-
-(defun transiant-error-map ()
-  (set-temporary-overlay-map
-   (let ((map (make-sparse-keymap)))
-     (define-key map (kbd "E") 'flymake-show-project-diagnostics)
-     (define-key map (kbd "[") 'my-prev-error)
-     (define-key map (kbd "]") 'my-next-error)
-     map)))
-
-
-
-(defun my-next-error ()
-  "Go to the next flymake error and set a temporary keybinding to jump between errors with []"
-  (interactive)
-   (flymake-goto-next-error)
-   (transiant-error-map))
-
-(global-set-key (kbd "C-c e ]")
-		'my-next-error)
-
-(defun my-prev-error ()
-  "Go to the previous flymake error and set a temporary keybinding to jump between errors with []"
-    (interactive)
-   (flymake-goto-prev-error)
-   (transiant-error-map))
-
-(global-set-key (kbd "C-c e [") 'my-prev-error)
-
 (global-set-key (kbd "C-c ^") 'beginning-of-line-text)
 
-(defun insert-pair-{} ()
-  "Insert a pair of {} brackets and position the cursor inside."
-  (interactive)
-  		  (insert "{\n\n}")
-		  (previous-line))
-(defun insert-pair-parens ()
-  "Insert a pair of () brackets and position the cursor inside."
-  (interactive)
-  		  (insert "()")
-		  (backward-char))
 
-(global-set-key (kbd "C-c b (") 'insert-pair-parens)
 
-(defun insert-pair-{} ()
-  "Insert a pair of {} brackets and position the cursor inside."
-  (interactive)
-  		  (insert "{\n\n}")
-		  (previous-line)
-		  (indent-for-tab-command))
+(load-library "error-map")
 
-(global-set-key (kbd "C-c b {") 'insert-pair-{})
+(load-library "insert-matched-pair")
 
 (defun config ()
   "Go to the Emacs config folder"
