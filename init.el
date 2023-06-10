@@ -47,6 +47,8 @@
   ("C-c g d" . xref-find-definitions)
   ("C-c r n" . eglot-rename)
   ("C-c f" . eglot-format)
+  :hook
+  (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode 0)))
   :custom
   (eglot-report-progress t))
 
