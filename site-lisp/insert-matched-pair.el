@@ -17,7 +17,8 @@
  (lambda (skeleton)
    (bind-key
     (string (car skeleton))
-    'skeleton-pair-insert-maybe))
+    'skeleton-pair-insert-maybe
+   skeleton-pair-transient-map))
  skeleton-pair-alist)
 
 (defun insert-matched-pair
