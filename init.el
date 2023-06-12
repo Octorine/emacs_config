@@ -48,10 +48,11 @@
 
 (use-package eglot
   :bind
+  (:map eglot-mode-map
   ("C-c a" . eglot-code-actions)
   ("C-c g d" . xref-find-definitions)
   ("C-c r n" . eglot-rename)
-  ("C-c f" . eglot-format)
+  ("C-c f" . eglot-format))
   :hook
   (eglot-managed-mode . (lambda () (eglot-inlay-hints-mode 0)))
   :custom
