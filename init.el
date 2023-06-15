@@ -59,6 +59,14 @@
   (eglot-report-progress t))
 
 (use-package haskell-mode
+  :config
+  (defun haskell-doctest
+      ()
+    "Run all doctests for haskell project"
+    (interactive)
+    (compile "cabal repl --with-ghc=doctest"))  
+  :bind (:map haskell-mode-map
+	      ("C-c C-c t" . 'haskell-doctest))
   :hook
   (haskell-mode . eglot-ensure))
 
