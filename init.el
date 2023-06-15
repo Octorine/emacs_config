@@ -83,6 +83,8 @@
 
 (load-library "insert-matched-pair")
 
+(load-library "jump-to-char")
+
 (defun config ()
   "Go to the Emacs config folder"
   (interactive)
