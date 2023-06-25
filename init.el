@@ -22,6 +22,9 @@
 
 (add-to-list 'load-path  (concat user-emacs-directory  "site-lisp"))
 
+;; Save backups in config folder
+
+(setq backup-directory-alist `(("." . ,(file-name-as-directory (locate-user-emacs-file "backups")))))
 
 ;;------------------------------------------------------------------------------
 ;; Packages
