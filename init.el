@@ -26,6 +26,10 @@
 
 (setq backup-directory-alist `(("." . ,(file-name-as-directory (locate-user-emacs-file "backups")))))
 
+;; scroll the screen in increments of one line
+
+(setq scroll-step 1)
+
 ;;------------------------------------------------------------------------------
 ;; Packages
 ;;------------------------------------------------------------------------------
