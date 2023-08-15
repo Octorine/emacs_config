@@ -78,7 +78,7 @@
 
 (use-package rust-mode
 	     :config
-	     (rust-enable-format-on-save)
+	     (setq rust-format-on-save t)
 	     :hook
 	     (rust-mode . eglot-ensure))
 
