@@ -3,4 +3,5 @@ eshell/
 eln-cache/
 \#*\#
 *~
-
+projects
+transient/
