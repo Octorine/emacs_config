@@ -3,16 +3,17 @@
 ;;------------------------------------------------------------------------------
 
 (custom-set-variables
-;; custom-set-variables was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes '(deeper-blue))
  '(inhibit-startup-screen t)
  '(ispell-dictionary nil)
- '(package-selected-packages '(## use-package eglot rust-mode haskell-mode)))
+ '(package-selected-packages
+   '(## use-package eglot rust-mode haskell-mode)))
 
 ;; disable the toolbar
 
@@ -70,11 +71,13 @@
       ()
     "Run all doctests for haskell project"
     (interactive)
-    (compile "cabal repl --with-ghc=doctest"))  
+    (compile "cabal repl --with-ghc=doctest"))
+  (cd (project-root (project-current)))
   :bind (:map haskell-mode-map
 	      ("C-c C-c t" . 'haskell-doctest))
   :hook
-  (haskell-mode . eglot-ensure))
+  ((haskell-mode . eglot-ensure)
+   (haskell-mode . interactive-haskell-mode)))
 
 (use-package rust-mode
 	     :config
@@ -103,3 +106,9 @@
   "Go to the Emacs config folder"
   (interactive)
   (find-file user-emacs-directory))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
