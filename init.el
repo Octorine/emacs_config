@@ -93,7 +93,7 @@
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c E") 'flymake-show-project-diagnostics)
 (global-set-key (kbd "C-c ^") 'beginning-of-line-text)
-
+(global-set-key (kbd "C-c SPC") 'cycle-spacing)
 
 
 (load-library "error-map")
