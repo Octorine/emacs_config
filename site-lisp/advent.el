@@ -29,7 +29,7 @@ day" str " =
   Day
     { dayName = \"" str "\",
       dayPart1 = d" str "p1 \"day" str ".txt\",
-      dayPart2 = d" str "p1 \"day" str ".txt\",
+      dayPart2 = d" str "p1 \"day" str ".txt\"
     }")
 
 
