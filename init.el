@@ -72,7 +72,6 @@
     "Run all doctests for haskell project"
     (interactive)
     (compile "cabal repl --with-ghc=doctest"))
-  (cd (project-root (project-current)))
   :bind (:map haskell-mode-map
 	      ("C-c C-c t" . 'haskell-doctest))
   :hook
